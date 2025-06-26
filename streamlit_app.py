@@ -36,7 +36,7 @@ if ingredients_list:
     my_insert_stmt = (
     "insert into smoothies.public.orders(ingredients, name_on_order) "
     "values ('" + INGREDIENTS_STRING + "', '" + name_on_order + "')")
-    if time_to_insert:
+    if INGREDIENTS_STRING:
         my_insert_stmt = ("insert into smoothies.public.orders(ingredients, name_on_order, order_filled) "
         "values ('" + INGREDIENTS_STRING + "', '" + name_on_order + "', TRUE)")
         session.sql(my_insert_stmt).collect()
