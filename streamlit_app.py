@@ -39,5 +39,5 @@ if ingredients_list:
         "insert into smoothies.public.orders(ingredients, name_on_order, order_filled) "
         "values ('" + INGREDIENTS_STRING.strip() + "', '" + name_on_order + "', TRUE)"
         )
-    session.sql(my_insert_stmt).collect()
-    st.success('Your Smoothie is ordered!', icon="✅")
+        session.sql(my_insert_stmt).collect()
+        st.success('Your Smoothie is ordered!', icon="✅")
