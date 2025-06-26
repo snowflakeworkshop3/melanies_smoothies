@@ -35,10 +35,13 @@ if ingredients_list:
     "values ('" + INGREDIENTS_STRING.strip() + "', '" + name_on_order + "')")
     time_to_insert = st.button('Submit Order')
 
-    if INGREDIENTS_STRING and time_to_insert and name_on_order:
-        my_insert_stmt_two = (
-        "insert into smoothies.public.orders(ingredients, name_on_order, order_filled) "
-        "values ('" + INGREDIENTS_STRING.strip() + "', '" + name_on_order + "', TRUE)"
+    if time_to_insert:
+        my_update_stmt = (
+          "UPDATE smoothies.public.orders "
+            "SET order_filled = TRUE "
+            "WHERE name_on_order = '" + name_on_order + "' "
+            "AND ingredients = '" + INGREDIENTS_STRING.strip() + "' "
+            "AND order_filled = FALSE"
         )
         session.sql(my_insert_stmt_two).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
