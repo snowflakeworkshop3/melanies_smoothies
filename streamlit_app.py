@@ -33,12 +33,9 @@ if ingredients_list:
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     time_to_insert = st.button('Submit Order')
-    my_insert_stmt = (
-        "INSERT INTO smoothies.public.orders (ingredients, name_on_order) "
-        "VALUES ('" + INGREDIENTS_STRING + "', '" + name_on_order + "')")
     if time_to_insert:
        my_insert_stmt = (
-        "INSERT INTO smoothies.public.orders (ingredients, name_on_order, order_filled) "
-        "VALUES ('" + INGREDIENTS_STRING + "', '" + name_on_order + "', TRUE)")
+        "INSERT INTO smoothies.public.orders (ingredients, name_on_order) "
+        "VALUES ('" + INGREDIENTS_STRING + "', '" + name_on_order + "'))
        session.sql(my_insert_stmt).collect()
        st.success('Your Smoothie is ordered!', icon="✅")
