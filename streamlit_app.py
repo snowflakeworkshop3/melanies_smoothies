@@ -43,5 +43,5 @@ if ingredients_list:
             "AND ingredients = '" + INGREDIENTS_STRING.strip() + "' "
             "AND order_filled = FALSE"
         )
-        session.sql(my_insert_stmt_two).collect()
+        session.sql(my_update_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
