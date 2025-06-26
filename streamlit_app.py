@@ -31,8 +31,8 @@ if ingredients_list:
         fruityvice_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
-    my_insert_stmt = ("insert into smoothies.public.orders(ingredients, name_on_order, order_filled) "
-    "values ('" + INGREDIENTS_STRING.strip() + "', '" + name_on_order + "', TRUE)")
+    my_insert_stmt = ("insert into smoothies.public.orders(ingredients, name_on_order) "
+    "values ('" + INGREDIENTS_STRING.strip() + "', '" + name_on_order + "')")
     time_to_insert = st.button('Submit Order')
 
     if INGREDIENTS_STRING and time_to_insert and name_on_order:
